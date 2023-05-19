@@ -5,55 +5,63 @@ using UnityEngine;
 public class Ocean : MonoBehaviour
 { 
     [SerializeField] GameManagerScript gameManager;
-    public List<Transform> Oplaces; //여기에 계란과 뱁새생성예정
+    public List<Tiles> Oplaces; //여기에 계란과 뱁새생성예정
      public List<string> OBirds;//바다에 담겨져있는 뱁세 이름
+    private int setup;
+    public List<int> EmptySet=new List<int>{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
     private int currentbirds=0;
     private int maxbirds=16;
+   
+
+    private void Update()
+    {
+
+    }
     public void lay_egg()
     {    
-        if(gameManager.GetTotalMoney()>=1000  && currentbirds<maxbirds){
-         GameObject newEgg =Instantiate(Resources.Load("Egg"),Oplaces[currentbirds].position, transform.rotation) as GameObject;
-         newEgg.transform.SetParent(Oplaces[currentbirds].transform,false);//계란은 항상 처음 
+        if(gameManager.GetTotalMoney()>=1000  && EmptySet.Count != 0){
+         GameObject newEgg =Instantiate(Resources.Load("Egg"),Oplaces[EmptySet[0]].getPlace().position, transform.rotation) as GameObject;
+         newEgg.transform.SetParent(Oplaces[EmptySet[0]].transform,false);//계란은 항상 처음 
          gameManager.SetTotalMoney(-1000);
-         currentbirds+=1;
-        updateBirds("Egg");
+         Oplaces[EmptySet[0]].setBaebsae("Egg");
+         newEgg.GetComponent<BaebSae>().setIndex(EmptySet[0]);
+         EmptySet.RemoveAt(0);
+         gameManager.feverGauge.value+=1;
+         gameManager.total_egg+=1;
+
+        
         }
         else{
             Debug.Log("No Money");
             Debug.Log("No Space");
         }
     }
-    public void updateBirds(string baebSae){
-        OBirds.Add(baebSae);
-        currentbirds =OBirds.Count;
-        Debug.Log("바다 총 길이:"+currentbirds);
+
+    public int GetNumber(){
+        int numbers=0;
+        for(int i=0; i<16;i++){
+            if(Oplaces[i].getName() != "Empty"){
+                numbers+=1;
+
+            }
+        }
+        return numbers;
     }
 
-    public void deleteBirds(string baebSae){
-        OBirds.Remove(baebSae);
-        currentbirds =OBirds.Count;
-        Debug.Log("바다 총 길이:"+currentbirds);
-
-    }
-
-    public void hatchEgg(){
-        OBirds.Add("CellLv1");
-        OBirds.Remove("Egg");
-        currentbirds =OBirds.Count;
-        Debug.Log("바다 총 길이:"+currentbirds);
-    }
-    /// <summary>
-    /// This function is called when the object becomes enabled and active.
-    /// </summary>
-    //실행됐을때
-
-
-    /// <summary>
-    /// This function is called when the object becomes enabled and active.
-    /// </summary>
+   
+    
+    
 
     public int getCurrentBirds(){
-        return currentbirds;
+        return Oplaces.Count;
+    }
+
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    private void OnEnable()
+    {
+        setup+=1;
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.

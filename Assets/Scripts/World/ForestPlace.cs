@@ -9,32 +9,42 @@ public class ForestPlace : MonoBehaviour
     /// This function is called when the object becomes enabled and active.
     /// </summary>
     [SerializeField] Forest forest;
+    
     private int savedCount;
     private List<string> savedArray;
     void Makebirds(){
-       if(savedCount != forest.getCurrentBirds())
-        {
-         for(int i=0; i<forest.FBirds.Count;i++){
-        GameObject birds = Instantiate(Resources.Load(forest.FBirds[i]) ,
-        forest.Fplaces[i].position, 
-        transform.rotation) as GameObject;
-        birds.transform.SetParent(forest.Fplaces[i].transform,false);//계란은 항상 처음 
-        
+
+         for(int i=0; i<forest.waitingbirds.Count;i++){
+      
+        GameObject newBirds =Instantiate(Resources.Load(forest.waitingbirds[i].baebSae)
+        ,forest.Fplaces[forest.waitingbirds[i].index].getPlace().position, transform.rotation) as GameObject;
+
+         newBirds.transform.SetParent(forest.Fplaces[forest.waitingbirds[i].index].getPlace().transform,false);
+         forest.Fplaces[forest.waitingbirds[i].index].setBaebsae(forest.waitingbirds[i].baebSae);
+         newBirds.GetComponent<BaebSae>().setIndex(forest.waitingbirds[i].index);
+     
          }
   
-        }
+        
     }
     private void OnEnable()
     {  
-      Invoke("Makebirds", 1);
+      if(forest.waitingbirds.Count!=0){
+        Makebirds();
+
+      }
+      else{
+        Debug.Log("nobirds");
+      }
+     
         }
     
     // This function is called when the behaviour becomes disabled or inactive.
     /// </summary>
     private void OnDisable()
     {
-      savedCount = forest.getCurrentBirds();
       
+      forest.waitingbirds.Clear();//싹다 지우기
     }
     
 }

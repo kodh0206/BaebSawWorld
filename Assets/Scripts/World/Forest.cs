@@ -5,37 +5,13 @@ using UnityEngine;
 public class Forest : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<Transform> Fplaces; //여기에 뱁새생성예정
-    public List<string> FBirds;//숲에 있는 뱁세 이름들
-    [SerializeField]private GameObject layingplaces;
-    private int currentbirds =0;
 
-    //수가 바뀔때마다
-    public void updateBirds(string baebSae){
-        FBirds.Add(baebSae);
-        currentbirds =FBirds.Count;
-    }
-
-    public void deleteBirds(string baebSae){
-        FBirds.Remove(baebSae);
-        currentbirds =FBirds.Count;
-
-    }
-    /// <summary>
-    /// This function is called when the object becomes enabled and active.
-    /// </summary>
-
-    public int getCurrentBirds(){
-        return currentbirds;
-    }
+    public List<WaitingBirds> waitingbirds;//여기에 진화 처음된 뱁새 존재
+    public List<Tiles> Fplaces; //여기에 뱁새생성예정
+    [SerializeField] private GameObject layingplaces;
+    [SerializeField] GameManagerScript gameManager;
+    public List<int> EmptySet=new List<int>{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    
  
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    private void Update()
-    {
-        Debug.Log(currentbirds);   
-    }
-
     
 }

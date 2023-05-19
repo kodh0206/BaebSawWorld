@@ -7,25 +7,38 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {   
-    [SerializeField]List<BaebSae> farms;//수용되어있는 게임 오브젝트
     [SerializeField]Text moneyindicator;
-    [SerializeField] double total_money;
+    [SerializeField] double total_money; //총액수 
+    [SerializeField] int diamond; //유료재화 다이아몬드
+    [SerializeField] float money_per_seconds;
+    [SerializeField] float normal_money =200;//평상시에 들어오는 돈 
+    [SerializeField] float fever_money_per_seconds;
+    public Slider feverGauge;
+    public float fevertime=30;
+//////////////////////////////////////////////재화
+
     //알까는곳 Ocean에서 까기 
     [SerializeField] private SaveManager saveManager;
-    
+    public AudioSource feverTimeost;
+    public AudioSource mainTheme;
+    //지역
     public GameObject ocean;
     public GameObject civ;
     public GameObject forest;
-    ///여기까지 입력
-
-    private int maxbirds =16; //한번에 수용할수 있는 새 갯수
-    private int currentbirds = 0; //현재 새 
+///////////////////////////////////////////////////////////////
+//업적작 
+    //깐 달걀수
+    public int total_egg; 
+    //총 합체 횟수
+    public int total_merge;
     
+//////////////////////////////////////////////////////
+//프레임마다 들어오는 재화    
     public NumberManager numberManager; //숫자표현
     private float nextPayMoney =1;
     private float interval =1;
-    private float money_per_seconds =200; // 초당 들어오는 재화 
-  
+
+
     private double moneyConverter;
 
     // Start is called before the first frame update
@@ -34,6 +47,9 @@ public class GameManagerScript : MonoBehaviour
         string current_money =PlayerPrefs.GetString("total_money");
         total_money = Double.Parse(current_money);
         moneyindicator.text = numberManager.ToCurrencyString(total_money);
+
+        money_per_seconds = normal_money;
+        fever_money_per_seconds *= normal_money;
     }
 
     // Update is called once per frame
@@ -51,13 +67,35 @@ public class GameManagerScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             exitManager();
         }  
-
-        Debug.Log(maxbirds);
+        /*
+            //피버타임 On
+        if(feverGauge.value==100){
+            while(feverGauge.value!=0)
+            mainTheme.volume=0;
+            feverTimeost.Play();
+            feverGauge.value -= 3;
+            fevertimeMode(true);
+        }
+            
+        else if(feverGauge.value<0){
+                feverGauge.value=0;
+                fevertimeMode(false);
+                mainTheme.volume=1;
+            }
+            */
     }
 
+    void fevertimeMode(bool isActive){
+        if(isActive)
+        {
+            money_per_seconds =fever_money_per_seconds;
+        }
 
-    //알까기 
-    
+        else{
+            
+                money_per_seconds = normal_money;
+        }
+    }
 
    
    
@@ -116,19 +154,11 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
-
-    public int getMaxbirds(){
-        return currentbirds;
-    }
-
-    public void setMaxbirds(int number){
-        currentbirds+=1;
-    }
     public double GetTotalMoney(){
         return total_money;
     }
-
     public void SetTotalMoney(double money){
         total_money += money;
     }
+    
 }
