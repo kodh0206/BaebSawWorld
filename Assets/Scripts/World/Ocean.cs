@@ -52,9 +52,7 @@ public class Ocean : MonoBehaviour
     
     
 
-    public int getCurrentBirds(){
-        return Oplaces.Count;
-    }
+   
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -62,6 +60,10 @@ public class Ocean : MonoBehaviour
     private void OnEnable()
     {
         setup+=1;
+    }
+
+    public void GetUpadateCash(){
+       
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.

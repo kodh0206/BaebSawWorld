@@ -136,7 +136,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 4.2, y: 4.2}
   m_EdgeRadius: 0
 --- !u!114 &3609244345626298161
 MonoBehaviour:
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f93b61865d12ed4b89a4c6dacb30993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   level: 11
   cashflow: 511.5
 --- !u!82 &6383107502555296440

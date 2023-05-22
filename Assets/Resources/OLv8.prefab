@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f93b61865d12ed4b89a4c6dacb30993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   level: 9
   cashflow: 127.5
 --- !u!50 &4492345579386359164

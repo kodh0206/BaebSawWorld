@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5810813988051002928}
   - component: {fileID: 9218188093757921211}
   - component: {fileID: 9218188093757921208}
-  - component: {fileID: 9218188093757921209}
   - component: {fileID: 9218188093757921214}
   - component: {fileID: 7549624057673828203}
+  - component: {fileID: -8489065849812243431}
   m_Layer: 6
   m_Name: OLv1
   m_TagString: Babsae
@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 9218188093757921212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -103,29 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f93b61865d12ed4b89a4c6dacb30993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   level: 2
   cashflow: 0.5
---- !u!50 &9218188093757921209
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9218188093757921212}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &9218188093757921214
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!82 &7549624057673828203
 AudioSource:
@@ -248,3 +228,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &-8489065849812243431
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9218188093757921212}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

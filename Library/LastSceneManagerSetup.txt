@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Lab(Level1).unity
+- path: Assets/MergeGame/Scenes/Game.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
