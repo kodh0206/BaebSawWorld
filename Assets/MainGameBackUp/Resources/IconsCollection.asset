@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e978f37de7373d4383d6496a7cabb5c, type: 3}
+  m_Name: IconsCollection
+  m_EditorClassIdentifier: 
+  objects:
+  - Icon: {fileID: 21300000, guid: 47e2b745d087996418db9563d082f36c, type: 3}
+    Title: "\uBC41\uC138\uD3EC"
+    RawPrice: 1
+  - Icon: {fileID: 21300000, guid: 20a4784f0eaedb942b54cf3cb69209a8, type: 3}
+    Title: "\uBC41\uBC41\uC138\uD3EC"
+    RawPrice: 3
+  - Icon: {fileID: 21300000, guid: 67d933e24b948c94ab9cdfc28628b71d, type: 3}
+    Title: "\uBC41\uBC30\uBC41\uC138\uD3EC"
+    RawPrice: 7
+  - Icon: {fileID: 21300000, guid: bd49028d12e87f64a8b03fa3912f8c39, type: 3}
+    Title: "\uBC30\uC560\uC560\uC571\uC138\uD3EC"
+    RawPrice: 15
+  - Icon: {fileID: 21300000, guid: 2df8519783377da4a912c50010986918, type: 3}
+    Title: "\uD478\uB529\uBC41\uD380\uC9C0"
+    RawPrice: 31
+  - Icon: {fileID: 21300000, guid: 1bf4b921fe4e65942a071d9cc9ee783d, type: 3}
+    Title: "\uBC41\uAC00\uC0AC\uB9AC"
+    RawPrice: 63
+  - Icon: {fileID: 21300000, guid: 6eacc14fcbe54b34a91f385d2891e624, type: 3}
+    Title: "\uBC41\uC870\uAC1C"
+    RawPrice: 127
+  - Icon: {fileID: 21300000, guid: 6f8603602276ea441b2eb50f3423168d, type: 3}
+    Title: "\uBC41\uBBF8\uC798"
+    RawPrice: 255
+  - Icon: {fileID: 21300000, guid: bc575b20d986df14e9f4de23aab1b9ae, type: 3}
+    Title: "\uBC41\uCC59\uC774"
+    RawPrice: 511
+  - Icon: {fileID: 21300000, guid: edad86e8b7302e34aba1673bf20a0100, type: 3}
+    Title: "\uB3C5\uBC41\uD30C\uB9AC"
+    RawPrice: 1023
+  - Icon: {fileID: 21300000, guid: 08066b4d95504c34bba37cf79cb08f73, type: 3}
+    Title: "\uBC41\uC9D5\uC5B4"
+    RawPrice: 2047
+  - Icon: {fileID: 21300000, guid: 1e1612dbc738e7e4cb0fb7678e8a6061, type: 3}
+    Title: "\uBC41\uD53C\uC26C"
+    RawPrice: 4095
+  - Icon: {fileID: 21300000, guid: d01dde5e234109649b428646ad44f552, type: 3}
+    Title: "\uC0D0\uB7EC\uBC41\uB354"
+    RawPrice: 8191
+  - Icon: {fileID: 21300000, guid: c1880095bb592ef48bd10e6591c1ac01, type: 3}
+    Title: "\uBC41\uC950"
+    RawPrice: 16383
+  - Icon: {fileID: 21300000, guid: 977a3903010b20f46a17b506bdb0154d, type: 3}
+    Title: "\uBC41\uB07C"
+    RawPrice: 32767
+  - Icon: {fileID: 21300000, guid: 372a74f5d204ed448bf22258751b71ac, type: 3}
+    Title: "\uBC41\uACF0"
+    RawPrice: 65535
+  - Icon: {fileID: 21300000, guid: 7ae7c1bb59bdd904da16f0397d6916b9, type: 3}
+    Title: "\uBC41\uB07C\uB9AC"
+    RawPrice: 131071
+  - Icon: {fileID: 21300000, guid: caff76e9c38b043439e949b7ef92e8c7, type: 3}
+    Title: "\uBC41\uC22D\uC774"
+    RawPrice: 262143
+  - Icon: {fileID: 21300000, guid: 8a09b3beecf60c546a821ecf22c8830d, type: 3}
+    Title: "\uBE45\uC2B9\uBAA8\uADFC\uBC41\uC0C8"
+    RawPrice: 524287
+  - Icon: {fileID: 21300000, guid: bde40dd9c24444b46b290c78c0ea05fb, type: 3}
+    Title: "\uB871\uB2E4\uB9AC\uBC41\uC0C8"
+    RawPrice: 1048575
+  - Icon: {fileID: 21300000, guid: 0b3ab8d00dbc37e44a13fddb661ad032, type: 3}
+    Title: "\uB871\uBC14\uB514\uBC41\uC0C8"
+    RawPrice: 2097151
+  - Icon: {fileID: 21300000, guid: 79b6851748cfee347b72324d38567709, type: 3}
+    Title: "\uB208\uC0AC\uB78C\uBC41\uC0C8"
+    RawPrice: 4194303
+  - Icon: {fileID: 21300000, guid: af802261fa5a64548b33bf6053c4bcfc, type: 3}
+    Title: "\uB09C\uC7C1\uC774\uBC41\uC0C8"
+    RawPrice: 8388607
+  - Icon: {fileID: 21300000, guid: 23f4bc9bc24560449ac046e5add2d612, type: 3}
+    Title: "\uBC41\uC0C8"
+    RawPrice: 16777215
+  - Icon: {fileID: 21300000, guid: ad6aaca58db543143affdc2a7e65bf9c, type: 3}
+    Title: "\uBC41\uC0C8 \uAD6C\uC11D\uAE30"
+    RawPrice: 33554431
+  - Icon: {fileID: 21300000, guid: bdb06766ca9a2b249a623b6eaeea0ac5, type: 3}
+    Title: "\uBC41\uC0C8 \uC2E0\uC11D\uAE30"
+    RawPrice: 67108863
+  - Icon: {fileID: 21300000, guid: 92d9e9b82a3374f4dbc9a91489635845, type: 3}
+    Title: "\uBC41\uC0C8 \uCCAD\uB3D9\uAE30"
+    RawPrice: 134217727
+  - Icon: {fileID: 21300000, guid: 22c93f5edb6232d4889fefe8f519c897, type: 3}
+    Title: "\uBC41\uC0C8 \uC5C7\uB098\uAC10\uAE30"
+    RawPrice: 1400
+  - Icon: {fileID: 21300000, guid: c88deaa3934daf54089b7610d91db875, type: 3}
+    Title: "\uBC41\uB77C\uBBF8\uB4DC \uAC74\uCD95\uAE30"
+    RawPrice: 1500
+  - Icon: {fileID: 21300000, guid: 313ac83e62607a94e93bf8fd312b346d, type: 3}
+    Title: "\uBC41\uB77C\uC624 \uC22D\uC0C1\uAE30"
+    RawPrice: 1600
+  - Icon: {fileID: 21300000, guid: 6c6b4b7dbb3dd6e469202d0af138f588, type: 3}
+    Title: "\uC2E0\uC131\uBC41\uB9C8\uC81C\uAD6D \uAC74\uCD95\uAE30"
+    RawPrice: 1650
+  - Icon: {fileID: 21300000, guid: fb0b0aeec120efe43b2aa267ed9f15d6, type: 3}
+    Title: "\uBC41\uC6B0\uC2A4 \uC22D\uC0C1\uAE30"
+    RawPrice: 1800
+  - Icon: {fileID: 21300000, guid: 0e8e5c6606fa47a4ab02cdb946bbe0ff, type: 3}
+    Title: "\uC911\uC138 \uBC41\uC0C8\uC2DC\uB300"
+    RawPrice: 1850
+  - Icon: {fileID: 21300000, guid: f0e2da0c55727844b8376e203e8b8c71, type: 3}
+    Title: "\uC911\uC138 \uD669\uAE08\uBC41\uC0C8 \uC2DC\uB300"
+    RawPrice: 1850
+  - Icon: {fileID: 21300000, guid: 4c44dd0ac7cd92c4e800d9d1e942288d, type: 3}
+    Title: "\uADFC\uB300 \uC554\uD751\uBC41\uC0C8\uC2DC\uB300"
+    RawPrice: 1850
+  - Icon: {fileID: 21300000, guid: 3df604a7662843543bb6c0520bd124b7, type: 3}
+    Title: "\uD604\uB300 \uC9C0\uC625\uBC41\uC0C8\uC2DC\uB300"
+    RawPrice: 1850

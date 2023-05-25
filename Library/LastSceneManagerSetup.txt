@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/MergeGame/Scenes/Game.unity
+- path: Assets/MainGameBackUp/Scenes/Cell.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
