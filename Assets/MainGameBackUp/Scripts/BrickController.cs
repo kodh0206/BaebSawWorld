@@ -30,13 +30,14 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     RectTransform rect;
     Coroutine getCoins;
+    public int DPS;
     const int idleSortingOrder = 1;
     const int selectedSortingOrder = 100;
     float moveDuration;
     bool canDrag;
     bool open;
     bool landing;
-
+    
     public RectTransform RectTransform => rect ?? (rect = GetComponent<RectTransform>());
     public Vector2 CachedPosition { get; private set; }
     public int Level { get; private set; }
@@ -80,11 +81,13 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void LevelUp(MergePreset preset)
     {
         Level ++;
-
+        DPS = (int)(Math.Pow(2,Level+1))-1;
         DoMergingAnimation();
         SetBrick(preset);
     }
-
+    void UpdateDPS(){
+    DPS = (int)(Math.Pow(2,Level+1))-1;
+    }
     public void HighlightBrick(BrickController brick, bool active)
     {
         if (brick == this || !Open || Level != brick.Level) return;
@@ -218,7 +221,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
             GetComponent<Animator>().SetTrigger("Blink");
             StartCoroutine(
@@ -228,8 +231,9 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                     UserProgress.Current.Coins += coins;
                     coinsCounter.text = CounterText.UpdateText(coins);
                     coinAnimator.SetTrigger("Coin");
+                    //여기서 사운드 플레이 
                 
-                }, 0.5f));
+                }, 1f));
         }
     }
     
@@ -238,4 +242,6 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         yield return new WaitForSeconds(delay);
         onComplete?.Invoke();
     }
+
+    
 }

@@ -5,7 +5,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
-// 리셋하고 시작하면 상점이 리셋이 안된다..
 
 public class BrickMarket :
 #if UNITY_ADS
@@ -21,8 +20,8 @@ public class BrickMarket :
     Text name;
     [SerializeField]
     Text price;
-    [SerializeField]
-    Button adsButton;
+    //[SerializeField]
+    //Button adsButton;
     [SerializeField]
     Button buyButton;
     [SerializeField]
@@ -33,47 +32,50 @@ public class BrickMarket :
     [SerializeField]
     GameController game;
     [SerializeField]
-    NumberManager numberManager;
+    
     int buytimes=0;
     MergePreset preset;
-    int Price =100;
-
-    const string defaultName = "????";
-
+    Int64 Price =100;
+    bool isbuy=false;
     bool isWatchAdsClicked;
     bool isGetCoinsClicked;
 
     public event Action<MergePreset> OnPurchase = delegate { };
 
    
-    
-    void Start()
-    {   buytimes =PlayerPrefs.GetInt("BuyTimes");
- 
+    void Update(){
+        Debug.Log("Buytimes"+buytimes);
+    }
+    void Awake()
+    {   
+       
+        Load();
+        
+        price.text = NumberManager.ToCurrencyString(Price);
+        
+
+
         buyButton.onClick.AddListener(OnBuyClick);
-        adsButton.onClick.AddListener(OnWatchAdsClick);
-  
-        
-        
-        Price = int.Parse(PlayerPrefs.GetString("BrickPrice"));
-        
-        price.text = numberManager.ToCurrencyString(Price);
+        //adsButton.onClick.AddListener(OnWatchAdsClick);
         
     }
 
     public void OnBuyClick()
     {   
-        if(UserProgress.Current.Coins >Price){
+        if(UserProgress.Current.Coins >Price&& !isbuy){
         alert.SetActive(false);
         UserProgress.Current.Coins -= Price;
+        isbuy=true;
         game.BuyBrick();
         buytimes+=1;
         Price = 100*((int)Math.Pow(3, buytimes));
-    
-        price.text = numberManager.ToCurrencyString(Price);
+        
+        price.text = NumberManager.ToCurrencyString(Price);
 
-        PlayerPrefs.SetString("BrickPrice",Price.ToString());
-        PlayerPrefs.SetInt("BuyTimes",buytimes);
+        Save();
+        Nobuy();
+        Invoke("Yesbuy",1f);
+        //UserProgress.Current.Diamonds +=1;
         }
     }
 
@@ -84,9 +86,24 @@ public class BrickMarket :
         Advertisement.Show(PlacementId.RewardedVideo);
 #endif
     }
+    void Save()
+    {   PlayerPrefs.SetString("BrickPrice",Price.ToString());
+        PlayerPrefs.SetInt("BuyTimes",buytimes);
 
-
- 
+    }
+    void Load()
+    {
+        buytimes =PlayerPrefs.GetInt("BuyTimes");
+        Price = Int64.Parse(PlayerPrefs.GetString("BrickPrice"));
+    }
+    void Nobuy(){
+        cannotBuy.SetActive(true);
+        
+    }
+    void Yesbuy(){
+        cannotBuy.SetActive(false);
+        isbuy=false;
+    }
 
     public void HighlightItem()
     {
@@ -112,5 +129,7 @@ public class BrickMarket :
         alert.SetActive(false);
         OnPurchase.Invoke(Preset);
     }
+
+  
 #endif
 }

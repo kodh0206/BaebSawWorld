@@ -37,7 +37,7 @@ public class GameManagerScript : MonoBehaviour
     
 //////////////////////////////////////////////////////
 //프레임마다 들어오는 재화    
-    public NumberManager numberManager; //숫자표현
+    
     private float nextPayMoney =1;
     private float interval =1;
 
@@ -67,7 +67,7 @@ public class GameManagerScript : MonoBehaviour
 
         if(canConvert){
         total_money = result;
-        moneyindicator.text = numberManager.ToCurrencyString((int)total_money);
+        moneyindicator.text = NumberManager.ToCurrencyString((int)total_money);
 
         money_per_seconds = normal_money;
         fever_money_per_seconds *= normal_money; 
@@ -85,7 +85,7 @@ public class GameManagerScript : MonoBehaviour
         //돈늘어나는거 1초마다 
         if(Time.time> nextPayMoney){
         total_money += money_per_seconds;
-        moneyindicator.text = numberManager.ToCurrencyString((int)total_money);
+        moneyindicator.text = NumberManager.ToCurrencyString((int)total_money);
         nextPayMoney = Time.time+ interval;
         }
         if(Input.GetKeyDown(KeyCode.Escape)){

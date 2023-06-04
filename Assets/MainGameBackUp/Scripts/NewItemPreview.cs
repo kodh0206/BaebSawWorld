@@ -10,15 +10,25 @@ public class NewItemPreview : MonoBehaviour, IPointerClickHandler
     Image icon;
     [SerializeField]
     Text title;
+    [SerializeField]
+    AudioSource emerge;
+
+    [SerializeField]
+    Button exitButton;
 
     Image raycastImage;
     
     void Start()
-    {
+    {   exitButton.onClick.AddListener(CloseWindow);
         MergeController.UnlockedNewLevel += UpdatePreview;
         raycastImage = GetComponent<Image>();
     }
 
+
+    void CloseWindow()
+    {
+        panel.SetActive(false);
+    }
     void UpdatePreview(bool value, int level)
     {
         if (!value) return;
@@ -29,6 +39,7 @@ public class NewItemPreview : MonoBehaviour, IPointerClickHandler
 
         raycastImage.raycastTarget = true;
         panel.SetActive(true);
+         emerge.Play();
     }
 
     public void OnPointerClick(PointerEventData eventData)

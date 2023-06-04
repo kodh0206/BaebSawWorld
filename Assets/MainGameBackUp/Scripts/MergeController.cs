@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 using UnityEngine;
@@ -97,13 +97,13 @@ public class MergeController
     }
 
     void UpdatePresets(long[] prices)
-    {
+    {  
         for (int i = 0; i < prices.Length; i++)
             presets[i].Price = prices[i];
     }
 
     public void ResetPresets()
-    {
+    {   
         for (int i = 0; i < presets.Count; i++)
             presets[i].Price = 0;
     }
@@ -111,5 +111,9 @@ public class MergeController
     public void UpdateRewardTimer(DateTime time)
     {
         RewardTimer = time;
+    }
+
+    public void ResetMaxLevel(){
+        MaxOpenLevel =0;
     }
 }

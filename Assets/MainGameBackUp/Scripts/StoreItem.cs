@@ -34,7 +34,7 @@ public class StoreItem :
     MergePreset preset;
     Int64 Price { get; set; }
     const string defaultName = "????";
-
+    
     bool isWatchAdsClicked;
     bool isGetCoinsClicked;
 
@@ -77,7 +77,7 @@ public class StoreItem :
         UpdatePreview();
     }
 
-    void UpdatePreview()
+    void  UpdatePreview()
     {
         if (preset == null)
         {
@@ -89,11 +89,11 @@ public class StoreItem :
 
         icon.sprite = preset.Icon;
         name.text = preset.Title;
-        price.text = CounterText.UpdateText(preset.Price);
+        price.text = NumberManager.ToCurrencyString(preset.Price);
+   
         Price = preset.Price;
 
         SetItemUnlock(true);
-
         buyButton.interactable = MergeController.Instance.FreeSpace && Price < UserProgress.Current.Coins;
 #if UNITY_ADS
         adsButton.interactable = MergeController.Instance.FreeSpace;

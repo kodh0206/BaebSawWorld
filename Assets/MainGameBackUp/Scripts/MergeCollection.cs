@@ -6,4 +6,5 @@ public class MergeCollection : ScriptableObject
 {
     [SerializeField]
     public List<MergePreset> objects;
+
 }

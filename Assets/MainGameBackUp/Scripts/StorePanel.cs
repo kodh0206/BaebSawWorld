@@ -8,7 +8,9 @@ using UnityEngine.Advertisements;
 public class StorePanel : MonoBehaviour
 {
     [SerializeField]
-    GameObject panel;
+    GameObject Storepanel;
+    [SerializeField]
+    GameObject Upgradepanel;
     [SerializeField]
     StoreItem storeItemPreviewPrefab;
     [SerializeField]
@@ -25,10 +27,15 @@ public class StorePanel : MonoBehaviour
     double rewardTimerSeconds = 7200;
     DateTime timeToReward;
     bool isRewardWaiting;
-
+    public Button StoreButton;
+    public Button UpgradeButton;
+    public Button DictionaryButton;
+    public Button achievementButton;
+    public Button storebuttons;
 
     void Awake()
-    {
+    {   StoreButton.onClick.AddListener(ToStore);
+        UpgradeButton.onClick.AddListener(ToUpgarade);
         MergeController.UnlockedNewLevel += OnNewLevelUnlocked;
         MergeController.RewardUsed += OnRewardUsed;
         rewardButton.onClick.AddListener(OnRewardClick);
@@ -52,20 +59,46 @@ public class StorePanel : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
         if (isRewardWaiting)
             UpdateRewardTimer();
         
-        if(panel.activeSelf)
+        if(Storepanel.activeSelf)
             UpdateButtons();
     }
+    public void  ToStore(){
+        Storepanel.SetActive(true);
+        Upgradepanel.SetActive(false);
+    }
 
+    public void ToUpgarade(){
+        Storepanel.SetActive(false);
+        Upgradepanel.SetActive(true);
+    }
     public void ShowStore(bool active)
     {
         UpdateButtons();
-        panel.SetActive(active);
+        Storepanel.SetActive(active);
+        StoreButton.gameObject.SetActive(active);
+        UpgradeButton.gameObject.SetActive(active);
+
+        DictionaryButton.gameObject.SetActive(!active);
+        achievementButton.gameObject.SetActive(!active);
+        storebuttons.gameObject.SetActive(!active);
     }
-    
+    public void ExitUpgrade()
+    {
+        UpdateButtons();
+        Storepanel.SetActive(false);
+        StoreButton.gameObject.SetActive(false);
+        UpgradeButton.gameObject.SetActive(false);
+        Upgradepanel.gameObject.SetActive(false);
+        
+        DictionaryButton.gameObject.SetActive(true);
+        achievementButton.gameObject.SetActive(true);
+        storebuttons.gameObject.SetActive(true);
+    }
+
     void OnRewardClick()
     {
         MergeController.Instance.OnRewardUsed();
@@ -137,9 +170,8 @@ public class StorePanel : MonoBehaviour
             rewardButton.gameObject.SetActive(true);
         }
 
+  
+
     }
 
-    void dishUpgrade(){
-        
-    }
 }

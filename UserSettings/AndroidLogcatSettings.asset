@@ -1,185 +1,161 @@
 {
-    "m_SelectedDeviceId": "R5CT330ZN3X",
+    "m_SelectedDeviceId": "ce0317136c31eca20c",
     "m_SelectedPackage": {
-        "deviceId": "R5CT330ZN3X",
+        "deviceId": "ce0317136c31eca20c",
         "name": "com.DopingInteractive.BaebSae",
-        "processId": 24056,
+        "processId": 15012,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 8706,
-            "exited": false
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 20780,
+            "exited": true
         },
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 29743,
-            "exited": false
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 22590,
+            "exited": true
         },
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 31845,
-            "exited": false
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 24300,
+            "exited": true
         },
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 23002,
-            "exited": false
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 25748,
+            "exited": true
         },
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 26201,
-            "exited": false
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 26480,
+            "exited": true
         },
         {
             "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 17902,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 23785,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 8399,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 10823,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 12754,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CT330ZN3X",
-            "name": "com.DopingInteractive.BaebSaeWorld",
-            "processId": 18524,
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 6670,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 18097,
+            "processId": 9102,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 14121,
+            "processId": 11113,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 15776,
+            "processId": 12375,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 16624,
+            "processId": 26734,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 18568,
+            "processId": 27266,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 19668,
+            "processId": 27883,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 20630,
+            "processId": 25329,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 21404,
+            "processId": 8550,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 22447,
+            "processId": 23046,
             "exited": false
         },
         {
             "deviceId": "R5CT330ZN3X",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 22909,
+            "processId": 25946,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "ce0317136c31eca20c",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 23359,
+            "processId": 9478,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "ce0317136c31eca20c",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 26584,
+            "processId": 27777,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "ce0317136c31eca20c",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 27337,
+            "processId": 821,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "ce0317136c31eca20c",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 29470,
+            "processId": 15012,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "R5CT104JH2W",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 30117,
+            "processId": 6742,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "R5CT104JH2W",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 30500,
+            "processId": 10541,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "R5CT104JH2W",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 31610,
+            "processId": 12707,
             "exited": false
         },
         {
-            "deviceId": "R5CT330ZN3X",
+            "deviceId": "R5CT104JH2W",
             "name": "com.DopingInteractive.BaebSae",
-            "processId": 24056,
+            "processId": 14453,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT104JH2W",
+            "name": "com.DopingInteractive.BaebSae",
+            "processId": 7133,
             "exited": false
         }
     ],

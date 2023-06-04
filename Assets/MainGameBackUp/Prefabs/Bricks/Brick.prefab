@@ -129,6 +129,7 @@ MonoBehaviour:
   randomBox: {fileID: 21300000, guid: 0e3e74333a84f42429543d238805f49c, type: 3}
   coinAnimator: {fileID: 693343553237669097}
   coinsCounter: {fileID: 4555307493539389815}
+  DPS: 0
 --- !u!1 &364848307761814850
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +901,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4580086385339971464, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7e14aab4100edc4cab0c7082444fc3a,
+        type: 3}
     - target: {fileID: 5877156578123839956, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
         type: 3}
       propertyPath: m_IsActive

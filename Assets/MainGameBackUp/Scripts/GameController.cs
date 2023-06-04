@@ -50,27 +50,28 @@ public class GameController : MonoBehaviour
 	public Image boxImage;
 	public GameObject fullText;
 	public Button boxButton;
-
+	public Text DiamondsCounter;
 	[Header("SFX")]
 	public PlaySfx clickSfx;
 	public PlaySfx landingSfx;
 	public PlaySfx mergingSfx;
 	public PlaySfx mainSfx;
 	public PlaySfx feverSfx;
-
+	public PlaySfx punch;
 	[Header("VFX")]
 	public ParticleSystem spawnEffect;
 	public ParticleSystem openEffect;
 	public ParticleSystem mergeEffect;
 
 	/// General //
-	
+	public int progresslevel;
 	//총벽돌 갯수 
 	int totalBricksCount = 3;
 	Vector2Int minCoords;
 	Vector2Int maxCoords;
 	Vector2Int bricksCount = new Vector2Int(3,2);
-	
+	int ProgressLevel; //오픈레밸 
+	public int spawnlevel;
 	//필드
 	Brick[,] field;
 	readonly List<Vector2Int> freeCoords = new List<Vector2Int>();
@@ -88,17 +89,18 @@ public class GameController : MonoBehaviour
 		{22,14,13,15,23},
 		{34,32,31,33,35}
 	};
-	const int maxBricksCount = 16 ;
+	const int maxBricksCount = 36;
 	readonly int[] startingLevelsStats = {40, 46, 74, 110};
 	int currentExperienceLevel;
 	int currentExperience;
 	int prevLevelMaxExperience;
 	int levelMaxExperience = 40;
-
+	int maxOpenLevel;
 	const float spawnVerticalOffset = 500f;
-	const float spawnTime = 10f;
+	public float spawnTime = 10f;
 	float timer;
 	float imageDelta = 0.1f;
+	int userLevel;
 	
 	static readonly int BigField = Animator.StringToHash("Big");
 	static readonly int SmallField = Animator.StringToHash("Small");
@@ -113,16 +115,15 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	int CurrentExperience
-	{
-		get => currentExperience;
+	//계란까는 레밸
+	int OpenLevel{
+		get => OpenLevel;
 		set
 		{
-			currentExperience = value; 
-			//experienceText.text = currentExperience.ToString();
+			OpenLevel= value;
+			//levelText.text = (currentExperienceLevel + 1).ToString();
 		}
 	}
-
 	int CurrentExperienceLevel
 	{
 		get => currentExperienceLevel;
@@ -146,7 +147,26 @@ public class GameController : MonoBehaviour
 	GameState gameState;
 
 	void Awake()
-	{
+	{	
+		if(!PlayerPrefs.HasKey("SpawnLevel")){
+			spawnlevel = 0;
+
+		}
+		else if(PlayerPrefs.HasKey("SpawnLevel"))
+		{
+			spawnlevel =PlayerPrefs.GetInt("SpawnLevel");
+		}
+		if(!PlayerPrefs.HasKey("SpawnTime"))
+		{
+			spawnTime =10f;
+		}
+		else if(PlayerPrefs.HasKey("SpawnTime")){
+			spawnTime = PlayerPrefs.GetFloat("SpawnTime");
+		}
+		
+		Debug.Log("소환 레벨 LV"+spawnlevel);
+		Debug.Log("소환 시간"+spawnTime+"초");
+		
 		timer = spawnTime;
 		boxImage.fillAmount = 0;
 		boxButton.onClick.AddListener(OnBoxClick);
@@ -163,12 +183,16 @@ public class GameController : MonoBehaviour
 
 		if (!LoadGame())
 		{
-			CurrentExperience = 0;
+			
 			CurrentExperienceLevel = 0;
 			LevelMaxExperience = startingLevelsStats[0];
 			gameState.Score = 0;
-		
+			gameState.MaxOpenLevel=0;
 			UpdateLevelExperience();
+			spawnlevel=1;
+			spawnTime=10f;
+			progresslevel =1;
+		
 		}
 		
 		UpdateCoords();
@@ -177,13 +201,16 @@ public class GameController : MonoBehaviour
 		MergeController.RewardUsed += SpawnBrick;
 		MergeController.Purchased += UpdateLevelExperience;
 		MergeController.RewardUsed += UpdateLevelExperience;
-
 		
+		Debug.Log("머지컨트롤러 확인:"+gameState.MaxOpenLevel);
 	}
 	
 	void Update()
 	{
 		UpdateSpawnTimer(true);
+		Debug.Log("최대 오픈 래밸"+gameState.MaxOpenLevel);
+		Debug.Log("벽돌갯수"+gameState.BricksCount);
+
 	}
 
 	//게임로드 
@@ -195,11 +222,8 @@ public class GameController : MonoBehaviour
 			return false;
 		
 		totalBricksCount = gameState.BricksCount;
-		CurrentExperience = gameState.Experience;
-		CurrentExperienceLevel = gameState.ExperienceLevel;
-		LevelMaxExperience = gameState.LevelMaxExperience;
-		prevLevelMaxExperience = gameState.PreviousLevelStats;
-
+		maxOpenLevel =gameState.MaxOpenLevel;
+		DiamondsCounter.text=gameState.Diamonds.ToString();
 		MergeController.Instance.UpdateState(gameState.MaxOpenLevel, gameState.GetPresetsPrices(), gameState.GetRewardTime());
 		UpdateCoords();
 
@@ -234,16 +258,12 @@ public class GameController : MonoBehaviour
 		for (int j = 0; j < presetPrices.Length; j++)
 			presetPrices[j] = presets.ElementAt(j).Price;
 		//저장
-		
 		gameState.BricksCount = totalBricksCount;
 		gameState.MaxOpenLevel = MergeController.Instance.MaxOpenLevel;
-		gameState.ExperienceLevel = CurrentExperienceLevel;
-		gameState.Experience = CurrentExperience;
-		gameState.LevelMaxExperience = levelMaxExperience;
-		gameState.PreviousLevelStats = prevLevelMaxExperience;
 		gameState.SetField(bricks);
 		gameState.SetPresetsPrices(presetPrices);
 		gameState.SetRewardTimer(MergeController.Instance.RewardTimer);
+		UserProgress.Current.UserLevels = MergeController.Instance.MaxOpenLevel+1;
 		UserProgress.Current.SaveGameState(name);
 	}
 	//필드 생성 
@@ -387,8 +407,11 @@ public class GameController : MonoBehaviour
 
 	void BrickOnClick(BrickController brick)
 	{
-		clickSfx.Play();
+		
 		SpawnEffect(openEffect, brick.gameObject);
+	}
+	public void PlayPunch(){
+		punch.Play();
 	}
 
 	void BrickOnPointerDown(BrickController brick)
@@ -493,10 +516,11 @@ public class GameController : MonoBehaviour
 	}
 	//벽돌구매
 	public void BuyBrick(){
-
-		SpawnBrick();
 		UpdateField();
+		
 		UpdateFieldSize();
+		SpawnBrick();
+		
 	}
 	void UpdateLevelExperience(int value = 0, BrickType brickType = BrickType.Default)
 	{
@@ -505,6 +529,9 @@ public class GameController : MonoBehaviour
 	
 		SaveGame();
 	}
+
+
+	
 
 	int GetLevelMaxExperience()
 	{
@@ -541,7 +568,7 @@ public class GameController : MonoBehaviour
 		if (timer <= 0)
 		{
 			timer = spawnTime;
-			SpawnBrick();
+			SpawnBrick(spawnlevel);
 		}
 		
 		float value = timer < spawnTime ? boxImage.fillAmount : 0f;

@@ -22,17 +22,14 @@ public class GameState
     [SerializeField]
     int maxOpenLevel;
     [SerializeField]
-    int experience;
-    [SerializeField]
-    int experienceLevel;
-    [SerializeField]
-    int levelMaxExperience;
-    [SerializeField]
     int prevLevelStats;
     [SerializeField]
     string rewardDateTime;
     [SerializeField]
     public long coin;
+
+    int userLevels;
+    int diamonds;
     public Int32 Score
     {
         get => score;
@@ -46,12 +43,15 @@ public class GameState
             StateUpdate?.Invoke();
         }
     }
-    public Int64 Coin{
+    public long Coin{
         get => coin;
         set => coin = value;
 
-        
+    }
 
+    public int Diamonds{
+        get => diamonds;
+        set => diamonds = value;
 
     }
 
@@ -69,28 +69,10 @@ public class GameState
         set => maxOpenLevel = value;
     }
 
-    public int Experience
+    public int UserLevels
     {
-        get => experience;
-        set => experience = value;
-    }
-    
-    public int ExperienceLevel
-    {
-        get => experienceLevel;
-        set => experienceLevel = value;
-    }
-
-    public int LevelMaxExperience
-    {
-        get => levelMaxExperience;
-        set => levelMaxExperience = value;
-    }
-
-    public int PreviousLevelStats
-    {
-        get => prevLevelStats;
-        set => prevLevelStats = value;
+        get => userLevels;
+        set => userLevels = value;
     }
     
     public void SetField(BrickState[] value)
@@ -127,18 +109,19 @@ public class GameState
     }
 
     public void ResetState()
-    {
+    {   
         score = 0;
         bricks = new BrickState[0];
         bricksCount = 3;
-        maxOpenLevel = 0;
-        experience = 0;
-        experienceLevel = 0;
         prevLevelStats = 0;
-        coin =0;
+        MergeController.Instance.ResetMaxLevel();
         for (int i = 0; i < presetPrices.Length; i++)
+        {
             presetPrices[i] = 0;
+            }
+        
         MergeController.Instance.ResetPresets();
+        
     }
 }
 

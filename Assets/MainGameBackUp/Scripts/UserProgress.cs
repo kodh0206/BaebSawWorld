@@ -25,7 +25,7 @@ public class UserProgress
     Dictionary<string, GameState> gameStates = new Dictionary<string, GameState>();
 
     [SerializeField]
-    int coins;
+    Int64 coins;
 
     [SerializeField]
     List<string> purchasedItems = new List<string>();
@@ -37,7 +37,11 @@ public class UserProgress
     string currentGameId;
     [SerializeField]
     string currentThemeId;
-
+    [SerializeField]
+    int diamonds; //다이아몬드 갯수
+    [SerializeField]
+    int userLevel;// 유저레벨
+    
     public static UserProgress Current
     {
         get
@@ -63,6 +67,38 @@ public class UserProgress
             Save();
 
             ProgressUpdate.Invoke();
+        }
+    }
+
+    public int Diamonds
+    {
+        get => diamonds;
+        set{
+
+            diamonds =  value;
+
+            Save();
+
+            ProgressUpdate.Invoke();
+
+
+
+        }
+
+
+
+    }
+
+    public int UserLevels
+    {
+        get =>userLevel;
+        set{
+            userLevel =value;
+
+            Save();
+
+            ProgressUpdate.Invoke();
+
         }
     }
 
@@ -163,11 +199,18 @@ public class UserProgress
     }
 
     public void ClearState()
-    {   
-        Coins =0;
+    {  
         Current.GetGameState<GameState>(Current.CurrentGameId).ResetState();
-        Current.SaveGameState(Current.CurrentGameId);
+        //PlayerPrefs.SetString("BrickPrice",Encryption.Encrypts("100"));
+        //PlayerPrefs.SetString("BuyTimes",Encryption.Encrypts(0.ToString()));
+
         PlayerPrefs.SetString("BrickPrice","100");
-        PlayerPrefs.SetInt("BuyTimes",1);
+        PlayerPrefs.SetInt("BuyTimes",0);
+        Coins =0;
+        Current.SaveGameState(Current.CurrentGameId);
+     
+        
     }
-}
+        
+      
+    }
