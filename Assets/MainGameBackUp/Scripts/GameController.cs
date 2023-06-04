@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
 		{22,14,13,15,23},
 		{34,32,31,33,35}
 	};
-	const int maxBricksCount = 36;
+	const int maxBricksCount = 35;
 	readonly int[] startingLevelsStats = {40, 46, 74, 110};
 	int currentExperienceLevel;
 	int currentExperience;
