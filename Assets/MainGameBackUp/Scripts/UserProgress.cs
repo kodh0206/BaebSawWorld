@@ -25,7 +25,7 @@ public class UserProgress
     Dictionary<string, GameState> gameStates = new Dictionary<string, GameState>();
 
     [SerializeField]
-    Int64 coins;
+    double coins;
 
     [SerializeField]
     List<string> purchasedItems = new List<string>();
@@ -57,12 +57,12 @@ public class UserProgress
         }
     }
 
-    public Int64 Coins
+    public double Coins
     {
         get => coins;
         set
         {
-            coins = (int) value;
+            coins =  value;
 
             Save();
 

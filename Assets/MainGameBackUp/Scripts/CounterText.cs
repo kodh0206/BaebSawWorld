@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class CounterText
 {
-    public static string UpdateText(decimal value)
+    public static string UpdateText(long value)
     {
         string number = value.ToString();
         int numDigits = number.Length;

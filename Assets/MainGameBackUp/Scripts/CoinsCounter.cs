@@ -8,7 +8,8 @@ public class CoinsCounter : MonoBehaviour
 
     void OnProgressUpdate()
     {
-        label.text = CounterText.UpdateText(UserProgress.Current.Coins);
+        label.text = NumberManager.ToCurrencyString(UserProgress.Current.Coins);
+        Debug.Log("현재 코인 갯수"+UserProgress.Current.Coins);
     }
 
     void Start()

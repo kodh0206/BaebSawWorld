@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
 	public Image boxImage;
 	public GameObject fullText;
 	public Button boxButton;
-	public Text DiamondsCounter;
+
 	[Header("SFX")]
 	public PlaySfx clickSfx;
 	public PlaySfx landingSfx;
@@ -223,7 +223,7 @@ public class GameController : MonoBehaviour
 		
 		totalBricksCount = gameState.BricksCount;
 		maxOpenLevel =gameState.MaxOpenLevel;
-		DiamondsCounter.text=gameState.Diamonds.ToString();
+		
 		MergeController.Instance.UpdateState(gameState.MaxOpenLevel, gameState.GetPresetsPrices(), gameState.GetRewardTime());
 		UpdateCoords();
 
@@ -517,7 +517,6 @@ public class GameController : MonoBehaviour
 	//벽돌구매
 	public void BuyBrick(){
 		UpdateField();
-		
 		UpdateFieldSize();
 		SpawnBrick();
 		

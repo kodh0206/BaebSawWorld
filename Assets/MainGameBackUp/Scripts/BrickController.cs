@@ -227,9 +227,9 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             StartCoroutine(
                 DelayedCall(() =>
                 {            
-                    int coins = (int)(Math.Pow(2,Level+1))-1;
+                    long coins = (long)(Math.Pow(2,Level+1))-1;
                     UserProgress.Current.Coins += coins;
-                    coinsCounter.text = CounterText.UpdateText(coins);
+                    coinsCounter.text = NumberManager.ToCurrencyString(coins);
                     coinAnimator.SetTrigger("Coin");
                     //여기서 사운드 플레이 
                 

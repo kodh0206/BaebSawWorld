@@ -15,7 +15,7 @@ public static class NumberManager
    "al", "am", "an", "ao", "ap", "aq", "ar", "as", "at", "au", "av", "aw", "ax", "ay", "az", "ba", "bb", 
    "bc", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bk", "bl", "bm", "bn", "bo", "bp", "bq", "br", "bs", "bt", 
    "bu", "bv", "bw", "bx", "by", "bz", "ca", "cb", "cc", "cd", "ce", "cf", "cg", "ch", "ci", "cj", "ck", "cl", "cm", "cn", "co", "cp", "cq", "cr", "cs", "ct", "cu", "cv", "cw", "cx", };
-    public static string ToCurrencyString(long number)
+    public static string ToCurrencyString(double number)
     {
         string zero ="0";
         if(-1d < number && number<1d)
@@ -64,7 +64,7 @@ public static class NumberManager
         //1A는 그냥 표현
         if(exponet <3)
         {
-            showNumber = System.Math.Truncate((double)number).ToString();
+            showNumber = System.Math.Truncate(number).ToString();
         }
 
         else

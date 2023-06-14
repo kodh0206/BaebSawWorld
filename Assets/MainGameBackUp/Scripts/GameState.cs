@@ -26,7 +26,7 @@ public class GameState
     [SerializeField]
     string rewardDateTime;
     [SerializeField]
-    public long coin;
+    public double coin;
 
     int userLevels;
     int diamonds;
@@ -43,7 +43,7 @@ public class GameState
             StateUpdate?.Invoke();
         }
     }
-    public long Coin{
+    public double Coin{
         get => coin;
         set => coin = value;
 

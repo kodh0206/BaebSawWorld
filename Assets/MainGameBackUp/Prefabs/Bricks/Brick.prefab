@@ -929,6 +929,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519708302802222621, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
         type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519708302802222621, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519708302802222621, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519708302802222621, guid: 52dd26c08f2f1de4c875ed21ec7109cb,
+        type: 3}
       propertyPath: m_FontData.m_RichText
       value: 0
       objectReference: {fileID: 0}
