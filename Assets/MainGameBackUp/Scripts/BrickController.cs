@@ -30,7 +30,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     RectTransform rect;
     Coroutine getCoins;
-    public int DPS;
+    public long DPS;
     const int idleSortingOrder = 1;
     const int selectedSortingOrder = 100;
     float moveDuration;
@@ -73,6 +73,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         iconImage.sprite = preset.Icon;
         iconImage.gameObject.SetActive(Open);
         boxImage.gameObject.SetActive(!Open);
+        DPS = preset.CPS;
         
         if(!Open)
             boxImage.sprite = Type == BrickType.Default ? defaultBox : randomBox;
@@ -81,7 +82,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void LevelUp(MergePreset preset)
     {
         Level ++;
-        DPS = (int)(Math.Pow(2,Level+1))-1;
+        DPS =preset.CPS;
         DoMergingAnimation();
         SetBrick(preset);
     }
@@ -227,7 +228,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             StartCoroutine(
                 DelayedCall(() =>
                 {            
-                    long coins = (long)(Math.Pow(2,Level+1))-1;
+                    long coins = DPS;
                     UserProgress.Current.Coins += coins;
                     coinsCounter.text = NumberManager.ToCurrencyString(coins);
                     coinAnimator.SetTrigger("Coin");

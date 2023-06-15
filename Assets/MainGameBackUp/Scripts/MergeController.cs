@@ -116,4 +116,28 @@ public class MergeController
     public void ResetMaxLevel(){
         MaxOpenLevel =0;
     }
+
+//
+public double CalculateCurrencyPerSecond()
+{
+    double currencyPerSecond = 0;
+
+    // Iterate through all presets except the first one (Default)
+    for (int i = 1; i < presets.Count; i++)
+    {
+        currencyPerSecond+= presets[i].CPS;
+    }
+
+    return currencyPerSecond;
+}
+
+//피버모드 
+public void Fevemode()
+{
+    for(int i = 1; i < presets.Count; i++)
+    {
+         presets[i].CPS*=2;
+    }
+
+}
 }

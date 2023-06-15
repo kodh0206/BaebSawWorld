@@ -18,19 +18,26 @@ public class CollectionEditor : Editor
             (rect, index, isActive, isFocused) => {
                 var element = reorderableList.serializedProperty.GetArrayElementAtIndex(index);
                 rect.y += 2;
-                EditorGUI.PropertyField(
-                    new Rect(rect.x, rect.y, 110, EditorGUIUtility.singleLineHeight),
-                    element.FindPropertyRelative("Icon"), GUIContent.none);
-                EditorGUI.PropertyField(
-                    new Rect(rect.x + 110, rect.y, rect.width - 110 - 120, EditorGUIUtility.singleLineHeight),
-                    element.FindPropertyRelative("Title"), GUIContent.none);
-                EditorGUI.PropertyField(
-                    new Rect(rect.x + 110+55, rect.y, rect.width - 110 - 120, EditorGUIUtility.singleLineHeight),
-                    element.FindPropertyRelative("Description"), GUIContent.none);    
 
-                EditorGUI.PropertyField(
-                    new Rect(rect.x + rect.width - 80, rect.y, 80, EditorGUIUtility.singleLineHeight),
-                    element.FindPropertyRelative("RawPrice"), GUIContent.none);
+        EditorGUI.PropertyField(
+            new Rect(rect.x, rect.y, 110, EditorGUIUtility.singleLineHeight),
+            element.FindPropertyRelative("Icon"), GUIContent.none);
+
+        EditorGUI.PropertyField(
+            new Rect(rect.x + 110, rect.y, rect.width - 110 - 120, EditorGUIUtility.singleLineHeight),
+            element.FindPropertyRelative("Title"), GUIContent.none);
+
+        EditorGUI.PropertyField(
+            new Rect(rect.x + 110 + 55, rect.y, rect.width - 110 - 120, EditorGUIUtility.singleLineHeight),
+            element.FindPropertyRelative("Description"), GUIContent.none);
+
+        EditorGUI.PropertyField(
+            new Rect(rect.x + rect.width - 180, rect.y, 80, EditorGUIUtility.singleLineHeight),
+            element.FindPropertyRelative("RawPrice"), GUIContent.none);
+
+        EditorGUI.PropertyField(
+            new Rect(rect.x + rect.width - 95, rect.y, 80, EditorGUIUtility.singleLineHeight),
+            element.FindPropertyRelative("CPS"), GUIContent.none);
                 
                 
             };

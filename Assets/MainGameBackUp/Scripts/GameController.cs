@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
 		public bool exist;
 		//빈블락
 		public readonly GameObject emptyBrick;
-		
+	
+		public long dps;
 		//벽돌 컨트롤러
 		public BrickController brick;
 
@@ -48,7 +49,7 @@ public class GameController : MonoBehaviour
 	//public Text maxExperienceText;
 	public Text boxTimer;
 	public Image boxImage;
-	public GameObject fullText;
+	public GameObject fullText; 
 	public Button boxButton;
 
 	[Header("SFX")]

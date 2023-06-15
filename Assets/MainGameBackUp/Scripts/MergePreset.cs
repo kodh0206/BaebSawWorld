@@ -8,7 +8,9 @@ public class MergePreset
     public string Description="Description";
     public double RawPrice;
     readonly float priceGrothFactor = 1.2f;
-
+    //초당코인 
+    public long CPS;
+ 
     
     double price;
     public double Price
