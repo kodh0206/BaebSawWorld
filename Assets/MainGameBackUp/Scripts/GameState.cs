@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using System.Numerics;
 [Serializable]
 public class GameState
 {
@@ -17,7 +17,7 @@ public class GameState
     BrickState [] bricks = new BrickState[0];
     [SerializeField]
     //초밥가격
-    long[] presetPrices = new long[0];
+    double[] presetPrices = new double[0];
     
     [SerializeField]
     int maxOpenLevel;
@@ -85,14 +85,14 @@ public class GameState
         return (BrickState[]) bricks.Clone();
     }
 
-    public void SetPresetsPrices(long[] value)
+    public void SetPresetsPrices(double[] value)
     {
-        presetPrices = (long[])value.Clone();
+        presetPrices = (double[])value.Clone();
     }
 
-    public long[] GetPresetsPrices()
+    public double[] GetPresetsPrices()
     {
-        return presetPrices.Clone() as long[];
+        return presetPrices.Clone() as double[];
     }
 
     public void SetRewardTimer(DateTime time)

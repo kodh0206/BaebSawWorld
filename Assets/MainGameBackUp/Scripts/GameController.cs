@@ -254,7 +254,7 @@ public class GameController : MonoBehaviour
 		}
 
 		IEnumerable<MergePreset> presets = MergeController.Instance.GetPresets();
-		long[] presetPrices = new long[presets.Count()];
+		double[] presetPrices = new double[presets.Count()];
 		for (int j = 0; j < presetPrices.Length; j++)
 			presetPrices[j] = presets.ElementAt(j).Price;
 		//저장

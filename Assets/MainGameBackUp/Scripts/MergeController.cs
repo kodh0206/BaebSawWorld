@@ -82,7 +82,7 @@ public class MergeController
         RewardUsed.Invoke(level, BrickType.Rewarded);
     }
 
-    public void UpdateState(int maxOpenLevel, long[] prices, DateTime timerTime)
+    public void UpdateState(int maxOpenLevel, double[] prices, DateTime timerTime)
     {
         RewardTimer = timerTime;
         UpdateMaxOpenLevel(maxOpenLevel);
@@ -96,7 +96,7 @@ public class MergeController
         UnlockedNewLevel(true, level);
     }
 
-    void UpdatePresets(long[] prices)
+    void UpdatePresets(double[] prices)
     {  
         for (int i = 0; i < prices.Length; i++)
             presets[i].Price = prices[i];

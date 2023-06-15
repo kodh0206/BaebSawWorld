@@ -32,7 +32,7 @@ public class StoreItem :
     Sprite unKnownIcon;
 
     MergePreset preset;
-    long Price { get; set; }
+    double  Price { get; set; }
     const string defaultName = "????";
     
     bool isWatchAdsClicked;
