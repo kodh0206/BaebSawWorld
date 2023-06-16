@@ -170,7 +170,7 @@ if(kioskbuytimes <6){
   kioskLevelText.text=string.Format("{0}/9",kioskbuytimes);
   }
   // 다이아몬드 구매상태
-  else
+  else 
   {
   kioskPriceText.text =string.Format("{0}",kioskdiamonds[kioskbuytimes-6]);
   kioskLevelText.text=string.Format("{0}/9",kioskbuytimes);

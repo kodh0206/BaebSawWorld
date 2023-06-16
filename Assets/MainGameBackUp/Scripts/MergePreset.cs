@@ -21,6 +21,6 @@ public class MergePreset
     //가격업데이트
     public void UpdatePrice()
     {
-        Price = price == 0 ? RawPrice : Math.Round(Price * priceGrothFactor);
+        Price = price == 0 ? RawPrice : Math.Round(Price * 1.15 / 10) * 10;
     }
 }
