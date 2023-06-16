@@ -15,8 +15,6 @@ public class GameController : MonoBehaviour
 		public bool exist;
 		//빈블락
 		public readonly GameObject emptyBrick;
-	
-		public long dps;
 		//벽돌 컨트롤러
 		public BrickController brick;
 
@@ -73,6 +71,7 @@ public class GameController : MonoBehaviour
 	Vector2Int bricksCount = new Vector2Int(3,2);
 	int ProgressLevel; //오픈레밸 
 	public int spawnlevel;
+	public double currenciesPerSeconds;
 	//필드
 	Brick[,] field;
 	readonly List<Vector2Int> freeCoords = new List<Vector2Int>();
@@ -106,6 +105,7 @@ public class GameController : MonoBehaviour
 	static readonly int BigField = Animator.StringToHash("Big");
 	static readonly int SmallField = Animator.StringToHash("Small");
 
+	double currenciesPerSecond;
 	Vector2Int BricksCount
 	{
 		get
@@ -202,7 +202,7 @@ public class GameController : MonoBehaviour
 		MergeController.RewardUsed += SpawnBrick;
 		MergeController.Purchased += UpdateLevelExperience;
 		MergeController.RewardUsed += UpdateLevelExperience;
-		
+		CalculateCurrenciesPerSecond();
 		Debug.Log("머지컨트롤러 확인:"+gameState.MaxOpenLevel);
 
 	}
@@ -210,9 +210,8 @@ public class GameController : MonoBehaviour
 	void Update()
 	{
 		UpdateSpawnTimer(true);
-		Debug.Log("최대 오픈 래밸"+gameState.MaxOpenLevel);
-		Debug.Log("벽돌갯수"+gameState.BricksCount);
-
+		CalculateCurrenciesPerSecond();
+		Debug.Log("초당 재화 :" + GetCurrenciesPerSecond() );
 	}
 
 	//게임로드 
@@ -237,6 +236,8 @@ public class GameController : MonoBehaviour
 				
 				SpawnBrick(new Vector2Int(i, j), bricks[i * field.GetLength(1) + j].level, 
 					(BrickType)bricks[i * field.GetLength(1) + j].type, bricks[i * field.GetLength(1) + j].open == 0);
+
+					
 			}
 		}
 		MergeController.Instance.FreeSpace = freeCoords.Count > 0;
@@ -326,6 +327,7 @@ public class GameController : MonoBehaviour
 				if (field[i, j].brick)
 					SetBrick(field[i,j].brick.gameObject, new Vector2Int(i, j));
 				SetBrick(field[i,j].emptyBrick, new Vector2Int(i, j));
+				
 			}
 		}
 	}
@@ -363,6 +365,7 @@ public class GameController : MonoBehaviour
 			UpdateLevelExperience(level, type);
 		
 		SpawnBrick(coords, level, type);
+		
 	}
 
 	void SpawnBrick(Vector2Int coords, int level, BrickType type, bool open = false)
@@ -383,7 +386,7 @@ public class GameController : MonoBehaviour
 		freeCoords.Remove(coords);
 		landingSfx.Play();
 		SpawnEffect(spawnEffect, field[coords.x,coords.y].brick.gameObject);
-		
+	
 
 
 		
@@ -409,8 +412,8 @@ public class GameController : MonoBehaviour
 
 	void BrickOnClick(BrickController brick)
 	{
-		
 		SpawnEffect(openEffect, brick.gameObject);
+		
 	}
 	public void PlayPunch(){
 		punch.Play();
@@ -514,6 +517,7 @@ public class GameController : MonoBehaviour
 		MergeController.Instance.UpdateMaxOpenLevel(brick.Level);
 		
 		Destroy(targetBrick.gameObject);
+	
 		return true;
 	}
 	//벽돌구매
@@ -611,4 +615,30 @@ public class GameController : MonoBehaviour
 		fieldAnimator.ResetTrigger(BigField);
 		fieldAnimator.ResetTrigger(SmallField);
 	}
+
+	void CalculateCurrenciesPerSecond()
+    {
+        double totalCurrenciesPerSecond = 0;
+
+        for (int i = 0; i < field.GetLength(0); i++)
+        {
+            for (int j = 0; j < field.GetLength(1); j++)
+            {
+                if (field[i, j].brick != null)
+                {
+                    double brickCurrenciesPerSecond = field[i, j].brick.DPS;
+                    totalCurrenciesPerSecond += brickCurrenciesPerSecond;
+                }
+            }
+        }
+
+        currenciesPerSecond = totalCurrenciesPerSecond;
+    }
+
+	double GetCurrenciesPerSecond()
+    {
+        return currenciesPerSecond;
+    }
+
+
 }
