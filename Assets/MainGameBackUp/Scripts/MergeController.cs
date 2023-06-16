@@ -14,7 +14,7 @@ public enum BrickType
 public class MergeController
 {
     static MergeController instance;
-
+    double moneyperseconds;
     readonly List<MergePreset> presets;
     MergePreset current;
     int maxOpenLevel;

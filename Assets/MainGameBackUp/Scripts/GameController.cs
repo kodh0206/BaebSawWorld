@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
 	GameState gameState;
 
 	void Awake()
-	{	
+	{	 
 		if(!PlayerPrefs.HasKey("SpawnLevel")){
 			spawnlevel = 0;
 
@@ -204,6 +204,7 @@ public class GameController : MonoBehaviour
 		MergeController.RewardUsed += UpdateLevelExperience;
 		
 		Debug.Log("머지컨트롤러 확인:"+gameState.MaxOpenLevel);
+
 	}
 	
 	void Update()
