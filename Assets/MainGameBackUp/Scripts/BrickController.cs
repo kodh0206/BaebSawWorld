@@ -30,7 +30,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     RectTransform rect;
     Coroutine getCoins;
-    public long DPS;
+    public double DPS;
     const int idleSortingOrder = 1;
     const int selectedSortingOrder = 100;
     float moveDuration;
@@ -228,7 +228,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             StartCoroutine(
                 DelayedCall(() =>
                 {            
-                    long coins = DPS;
+                    double coins = DPS;
                     UserProgress.Current.Coins += coins;
                     coinsCounter.text = NumberManager.ToCurrencyString(coins);
                     coinAnimator.SetTrigger("Coin");
