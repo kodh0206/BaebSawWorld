@@ -29,9 +29,6 @@ public class StorePanel : MonoBehaviour
     bool isRewardWaiting;
     public Button StoreButton;
     public Button UpgradeButton;
-    public Button DictionaryButton;
-    public Button achievementButton;
-    public Button storebuttons;
 
     void Awake()
     {   StoreButton.onClick.AddListener(ToStore);
@@ -82,9 +79,7 @@ public class StorePanel : MonoBehaviour
         StoreButton.gameObject.SetActive(active);
         UpgradeButton.gameObject.SetActive(active);
 
-        DictionaryButton.gameObject.SetActive(!active);
-        achievementButton.gameObject.SetActive(!active);
-        storebuttons.gameObject.SetActive(!active);
+        
     }
     public void ExitUpgrade()
     {
@@ -94,9 +89,7 @@ public class StorePanel : MonoBehaviour
         UpgradeButton.gameObject.SetActive(false);
         Upgradepanel.gameObject.SetActive(false);
         
-        DictionaryButton.gameObject.SetActive(true);
-        achievementButton.gameObject.SetActive(true);
-        storebuttons.gameObject.SetActive(true);
+ 
     }
 
     void OnRewardClick()
