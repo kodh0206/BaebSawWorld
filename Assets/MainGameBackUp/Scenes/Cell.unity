@@ -45441,9 +45441,6 @@ MonoBehaviour:
   rewardTimer: {fileID: 1951982114992188052}
   StoreButton: {fileID: 26929594}
   UpgradeButton: {fileID: 1460278367}
-  DictionaryButton: {fileID: 1338627356}
-  achievementButton: {fileID: 884865695}
-  storebuttons: {fileID: 6340882304202424592}
 --- !u!1 &7369522125381819217
 GameObject:
   m_ObjectHideFlags: 0
@@ -46095,8 +46092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -76.54}
-  m_SizeDelta: {x: 720, y: 1093.42}
+  m_AnchoredPosition: {x: -0.000030518, y: 14.36}
+  m_SizeDelta: {x: 720, y: 911.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9222553172854335799
 MonoBehaviour:
