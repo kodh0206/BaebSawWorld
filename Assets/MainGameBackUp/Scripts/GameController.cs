@@ -115,6 +115,11 @@ public class GameController : MonoBehaviour
 			return bricksCount;
 		}
 	}
+	//피버모드 
+	private float feverGauge = 0;  // 피버 게이지
+	private bool isFeverMode = false; // 피버 모드 활성화 여부
+	private float feverModeDuration = 30f; // 피버 모드 지속 시간
+	private float feverModeRemaining = 0; // 피버 모드 남은 시간
 
 	//계란까는 레밸
 	int OpenLevel{
@@ -212,6 +217,19 @@ public class GameController : MonoBehaviour
 		UpdateSpawnTimer(true);
 		CalculateCurrenciesPerSecond();
 		Debug.Log("초당 재화 :" + GetCurrenciesPerSecond() );
+
+	if (isFeverMode)
+    	{
+        // 남은 시간 감소
+        	feverModeRemaining -= Time.deltaTime;
+        	// 남은 시간이 없으면 피버 모드 해제
+        	if (feverModeRemaining <= 0)
+        	{	
+            	isFeverMode = false;
+            	feverGauge = 0;
+            	// 여기서 벽돌 생성 속도와 수익을 원래대로 설정
+        	}
+    	}
 	}
 
 	//게임로드 
@@ -456,6 +474,7 @@ public class GameController : MonoBehaviour
 			mergingSfx.Play();
 			freeCoords.Add(cachedCoords);
 			//UpdateLevelExperience(brick.Level);
+			 IncreaseFeverGauge(1); //게이지 채우기
 			SpawnEffect(mergeEffect, brick.gameObject);
 		}
 		else
@@ -639,6 +658,22 @@ public class GameController : MonoBehaviour
     {
         return currenciesPerSecond;
     }
+
+	void IncreaseFeverGauge(float amount)
+{
+    feverGauge += amount;
+    CheckFeverMode();
+}
+
+void CheckFeverMode()
+{
+    if (feverGauge >= 100 && !isFeverMode)  // 게이지가 100 이상이면 피버 모드 활성화
+    {
+        isFeverMode = true;
+        feverModeRemaining = feverModeDuration;
+        // 여기서 벽돌 생성 속도와 수익을 두 배로 설정
+    }
+}
 
 
 }

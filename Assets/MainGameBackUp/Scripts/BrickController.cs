@@ -37,7 +37,7 @@ public class BrickController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     bool canDrag;
     bool open;
     bool landing;
-    
+    public bool isFeverMode = false;
     public RectTransform RectTransform => rect ?? (rect = GetComponent<RectTransform>());
     public Vector2 CachedPosition { get; private set; }
     public int Level { get; private set; }
