@@ -7,6 +7,14 @@ using UnityEngine.Advertisements;
 
 public class StorePanel : MonoBehaviour
 {
+    //----edited----//
+    [SerializeField]
+    GameObject StoreIntroPanel;
+    public Button NewStoreButton;
+    public Button NewUpgradeButton;
+    public Button NewMiniStoreButton;
+    public Button NewMiniUpgradeButton;
+    //----edited----//
     [SerializeField]
     GameObject Storepanel;
     [SerializeField]
@@ -63,34 +71,73 @@ public class StorePanel : MonoBehaviour
         if(Storepanel.activeSelf)
             UpdateButtons();
     }
+    //edited
     public void  ToStore(){
         Storepanel.SetActive(true);
         Upgradepanel.SetActive(false);
-    }
+        StoreIntroPanel.SetActive(false);
+        StoreButton.gameObject.SetActive(false);
+        UpgradeButton.gameObject.SetActive(true);
+        NewMiniUpgradeButton.gameObject.SetActive(true);
+        NewMiniStoreButton.gameObject.SetActive(false);
 
+
+    }
+    //edited
     public void ToUpgarade(){
         Storepanel.SetActive(false);
         Upgradepanel.SetActive(true);
+        StoreIntroPanel.SetActive(false);
+        StoreButton.gameObject.SetActive(true);
+        UpgradeButton.gameObject.SetActive(false);
+        NewMiniUpgradeButton.gameObject.SetActive(false);
+        NewMiniStoreButton.gameObject.SetActive(true);
+
     }
-    public void ShowStore(bool active)
+
+    //edited
+    public void ShowIntroStore(bool active)
     {
         UpdateButtons();
-        Storepanel.SetActive(active);
-        StoreButton.gameObject.SetActive(active);
-        UpgradeButton.gameObject.SetActive(active);
+        StoreIntroPanel.SetActive(active);
+        NewStoreButton.gameObject.SetActive(active);
+        NewUpgradeButton.gameObject.SetActive(active);
 
         
     }
-    public void ExitUpgrade()
+    //new code
+    public void BackToStore()
     {
         UpdateButtons();
+        StoreIntroPanel.SetActive(true);
+        NewStoreButton.gameObject.SetActive(true);
+        NewUpgradeButton.gameObject.SetActive(true);
+        StoreButton.gameObject.SetActive(true);
         Storepanel.SetActive(false);
-        StoreButton.gameObject.SetActive(false);
-        UpgradeButton.gameObject.SetActive(false);
-        Upgradepanel.gameObject.SetActive(false);
-        
- 
+        Upgradepanel.SetActive(false);
+        NewMiniUpgradeButton.gameObject.SetActive(false);
+        NewMiniStoreButton.gameObject.SetActive(false);
     }
+
+    //Original Code
+    //public void ShowStore(bool active)
+    //{
+    //    UpdateButtons();
+    //    Storepanel.SetActive(active);
+    //    StoreButton.gameObject.SetActive(active);
+    //    UpgradeButton.gameObject.SetActive(active);
+
+
+    //}
+    //public void ExitUpgrade()
+    //{
+    //    UpdateButtons();
+    //    Storepanel.SetActive(false);
+    //    StoreButton.gameObject.SetActive(false);
+    //    UpgradeButton.gameObject.SetActive(false);
+    //    Upgradepanel.gameObject.SetActive(false);
+        
+    //}
 
     void OnRewardClick()
     {

@@ -105,7 +105,19 @@ public class GameController : MonoBehaviour
 	static readonly int BigField = Animator.StringToHash("Big");
 	static readonly int SmallField = Animator.StringToHash("Small");
 
-	double currenciesPerSecond;
+    //edit
+    //idle time increase code
+	//check Line start from 244
+    [Header("IdleTime")]
+
+    public float time_increase = 1.0f;
+    public float current_time = 0f;
+    public DateTime closedTime;
+	private bool userIdle = false;
+	private float timeSinceLastInput;
+	public float idleLength = 30.0f;
+
+    double currenciesPerSecond;
 	Vector2Int BricksCount
 	{
 		get
@@ -218,7 +230,7 @@ public class GameController : MonoBehaviour
 		CalculateCurrenciesPerSecond();
 		Debug.Log("초당 재화 :" + GetCurrenciesPerSecond() );
 
-	if (isFeverMode)
+		if (isFeverMode)
     	{
         // 남은 시간 감소
         	feverModeRemaining -= Time.deltaTime;
@@ -230,10 +242,30 @@ public class GameController : MonoBehaviour
             	// 여기서 벽돌 생성 속도와 수익을 원래대로 설정
         	}
     	}
+
+		//edited
+		//idle check
+		//
+
+		if (Input.touchCount > 0 || Input.anyKey)
+		{
+			timeSinceLastInput = 0;
+			Debug.Log("touched: ");
+		}
+		else
+		{
+			timeSinceLastInput += Time.deltaTime;
+			Debug.Log("not touched: ");
+
+		}
+		userIdle = timeSinceLastInput >= idleLength ? true : false;
+		Debug.Log("idle status: " + userIdle);
+
+		IdleStatus(userIdle);
 	}
 
 	//게임로드 
-		bool LoadGame()
+	bool LoadGame()
 	{	//벽돌현황 
 		BrickState[] bricks = gameState.GetField();
 		
@@ -660,20 +692,68 @@ public class GameController : MonoBehaviour
     }
 
 	void IncreaseFeverGauge(float amount)
-{
-    feverGauge += amount;
-    CheckFeverMode();
-}
+	{
+		feverGauge += amount;
+		CheckFeverMode();
+	}
 
-void CheckFeverMode()
-{
-    if (feverGauge >= 100 && !isFeverMode)  // 게이지가 100 이상이면 피버 모드 활성화
+	void CheckFeverMode()
+	{
+		if (feverGauge >= 100 && !isFeverMode)  // 게이지가 100 이상이면 피버 모드 활성화
+		{
+			isFeverMode = true;
+			feverModeRemaining = feverModeDuration;
+			// 여기서 벽돌 생성 속도와 수익을 두 배로 설정
+		}
+	}
+    //edit
+    //idle time increase code 
+
+    void IdleStatus(bool status)
     {
-        isFeverMode = true;
-        feverModeRemaining = feverModeDuration;
-        // 여기서 벽돌 생성 속도와 수익을 두 배로 설정
+		if (status)
+        {
+			Debug.Log("we are in");
+			//no needs for time record
+			string lastTimeString = PlayerPrefs.GetString("LastTime", DateTime.Now.ToString());
+			
+			Debug.Log("time 1: " + lastTimeString);
+
+			AddingIdleTime();
+
+			InvokeRepeating("IncreaseTime", 0f, 1f);	
+		}
+		else
+        {
+			//no needs for time record
+			OnApplicationQuit();
+			Debug.Log("time exit before refresh: " + current_time);
+			current_time = 0;
+			Debug.Log("time value: " + current_time);
+			//Debug.Log("time exit: " + DateTime.Now);
+		}
+
+	}
+
+    void AddingIdleTime()
+    {
+        TimeSpan idleTime = DateTime.Now - closedTime;
+        float idleValue = (float)idleTime.TotalSeconds * time_increase;
+        current_time += idleValue;
     }
-}
+
+    private void IncreaseTime()
+    {
+        current_time += time_increase;
+		//Debug.Log("time exteding: " + current_time);
+    }
+
+    private void OnApplicationQuit()
+    {
+		// 게임을 닫을 때 현재 시간을 저장합니다.
+		//no needs for time record
+		PlayerPrefs.SetString("LastTime", DateTime.Now.ToString());
+    }
 
 
 }

@@ -62,7 +62,10 @@ public class UserProgress
         get => coins;
         set
         {
-            coins =  value;
+            coins = value;
+
+            //testing
+            coins += 100000;
 
             Save();
 
@@ -76,6 +79,7 @@ public class UserProgress
         set{
 
             diamonds =  value;
+            diamonds += 100000;
 
             Save();
 
@@ -205,8 +209,11 @@ public class UserProgress
         //PlayerPrefs.SetString("BuyTimes",Encryption.Encrypts(0.ToString()));
 
         PlayerPrefs.SetString("BrickPrice","100");
-        PlayerPrefs.SetInt("BuyTimes",0);
-        Coins =0;
+
+      
+
+
+        Coins = 0;
         Current.SaveGameState(Current.CurrentGameId);
      
         
